@@ -1,5 +1,11 @@
 <h1>Persons</h1>
 
+<h4>Buscar por nome:</h4>
+<%= form_with url: persons_index_path, method: :get do |form| %>
+    <%= form.text_field :search, placeholder: "Digite o primeiro nome" %>
+   <%= form.submit "Buscar", name: nil %>
+<% end %>
+
 <ul>
    <% @persons.each do |person| %>
       <li><%= person.title %></li>
@@ -12,5 +18,12 @@
    <% end %>
 </ul>
 
-<%= paginate @persons %>
+<div class="text-center">
+   <%= paginate @persons %>
+</div>
+
+
+
+
+
 
