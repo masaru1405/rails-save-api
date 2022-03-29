@@ -2,7 +2,7 @@
 
 <h4>Buscar por nome:</h4>
 <%= form_with url: persons_index_path, method: :get do |form| %>
-    <%= form.text_field :search, placeholder: "Digite o primeiro nome" %>
+   <%= form.text_field :search, value: params[:search], placeholder: "Digite o primeiro nome" %>
    <%= form.submit "Buscar", name: nil %>
 <% end %>
 
