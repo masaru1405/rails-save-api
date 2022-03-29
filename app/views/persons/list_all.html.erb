@@ -1,0 +1,21 @@
+<h1>List All</h1>
+<div>
+  <%= link_to 'Busca', root_path %>
+</div>
+
+<ul>
+  <% @persons.each do |person| %>
+    <li><%= person.title %></li>
+    <li><%= person.first_name %></li>
+    <li><%= person.last_name %></li>
+    <li><%= person.gender%></li>
+    <li><%= person.email %></li>
+    <li><%= image_tag person.picture %></li>
+    <hr>
+  <% end %>
+</ul>
+
+<div class="text-center">
+  <%= paginate @persons %>
+</div>
+

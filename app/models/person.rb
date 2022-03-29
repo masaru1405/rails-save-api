@@ -5,7 +5,7 @@ class Person < ApplicationRecord
    def self.search(search)
       person = Person.where(first_name: search)
       if person.count == 0 #sem resultado
-          return Person.all
+          return nil
       end
       return person
    end

@@ -1,11 +1,20 @@
 class PersonsController < ApplicationController
   def index
     if !params[:search].nil? #if search is not nil
-      @persons = Person.search(params[:search]).page(params[:page])
+      result = Person.search(params[:search])
+      if result
+        @persons = result.page(params[:page])
+          @persons
+      else #se não achou nenhum resultado
+        nil
+      end
     else
-      @persons = Person.page params[:page]
+      @persons = nil
     end
-    #@persons = Person.search(params[:search])
+  end
+
+  def list_all
+    @persons = Person.page params[:page]
   end
 
   private

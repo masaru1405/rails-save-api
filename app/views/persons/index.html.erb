@@ -1,26 +1,32 @@
 <h1>Persons</h1>
-
+<h3><%= link_to 'Listar todas as pessoas', list_path %></h3>
 <h4>Buscar por nome:</h4>
-<%= form_with url: persons_index_path, method: :get do |form| %>
+<%= form_with url: persons_path, method: :get do |form| %>
    <%= form.text_field :search, value: params[:search], placeholder: "Digite o primeiro nome" %>
    <%= form.submit "Buscar", name: nil %>
 <% end %>
 
-<ul>
-   <% @persons.each do |person| %>
-      <li><%= person.title %></li>
-      <li><%= person.first_name %></li>
-      <li><%= person.last_name %></li>
-      <li><%= person.gender%></li>
-      <li><%= person.email %></li>
-      <li><%= image_tag person.picture %></li>
-      <hr>
-   <% end %>
-</ul>
+<% if @persons %>
+   <ul>
+      <% @persons.each do |person| %>
+         <li><%= person.title %></li>
+         <li><%= person.first_name %></li>
+         <li><%= person.last_name %></li>
+         <li><%= person.gender%></li>
+         <li><%= person.email %></li>
+         <li><%= image_tag person.picture %></li>
+         <hr>
+      <% end %>
+   </ul>
+   <div class="text-center">
+      <%= paginate @persons %>
+   </div>
+<% else %>
+   <h4>Nenhum resultado encontrado. </h4>
+<% end %>
 
-<div class="text-center">
-   <%= paginate @persons %>
-</div>
+
+
 
 
 
