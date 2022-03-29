@@ -1,0 +1,16 @@
+<h1>Persons</h1>
+
+<ul>
+   <% @persons.each do |person| %>
+      <li><%= person.title %></li>
+      <li><%= person.first_name %></li>
+      <li><%= person.last_name %></li>
+      <li><%= person.gender%></li>
+      <li><%= person.email %></li>
+      <li><%= image_tag person.picture %></li>
+      <hr>
+   <% end %>
+</ul>
+
+<%= paginate @persons %>
+
